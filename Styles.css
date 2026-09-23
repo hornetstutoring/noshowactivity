@@ -30,3 +30,8 @@ h5 {
     color: aliceblue;
     margin-left: 40px;
 }
+.smalllink {
+    color: #FFD600;
+    font-size: 16;
+    margin: auto;
+}
