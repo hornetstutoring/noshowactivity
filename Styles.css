@@ -4,37 +4,243 @@ body {
 a {
     margin-left: 40px;
     font-size: 25;
-    color: aliceblue;
-    text-decoration: underline;
+    color:aliceblue;
 }
 p {
     color:aliceblue;
     margin-left: 40px;
 }
+.quote {
+    margin-left: 4em;
+}
 h4 {
-    color:aliceblue;
+    color:#FFD600;
     margin-left: 40px;
     padding-top: 40px;
 }
 h3 {
     color:#FFD600;
-    text-align: center;
+    text-align: left;
+    margin-left: 40px;
+    padding-top: 40px;
+    text-decoration: underline;
 }
 h2 {
     color:#FFD600
 }
 li {
     color: aliceblue;
+    margin-left: 2em;
+}
+.superindent {
+    margin-left: 4em;
 }
 h5 {
     color: aliceblue;
     margin-left: 40px;
+    text-decoration: underline;
+}
+.image {
+    display: block;
+    margin: 0 auto;
+    padding-top: 40px;
 }
 .smalllink {
     color: #FFD600;
-    font-size: 16;
+    font-size: 23;
     margin: 40px;
+}
+.backtotop {
+  /* Change these to taste */
+  --size: 0.8rem;           /* font size: try 12px, 0.75rem, 80%, etc. */
+  --gap-left: 1rem;         /* space between the heading text and the link */
+  --gap-right: 0;           /* space after the link */
+  --pad-y: 0.2rem;          /* vertical padding */
+  --pad-x: 0.4rem;          /* horizontal padding */
+  --letter-space: 0.03em;   /* space between letters */
+  --word-space: 0.1em;      /* space between words */
+
+  font-size: var(--size);
+  font-weight: normal;
+  letter-spacing: var(--letter-space);
+  word-spacing: var(--word-space);
+  color: #F5F3BF;
+
+  display: inline-block;    /* lets vertical margin/padding actually work */
+  margin-left: var(--gap-left);
+  margin-right: var(--gap-right);
+  padding: var(--pad-y) var(--pad-x);
+  vertical-align: middle;   /* keeps it lined up with the heading text */
 }
 .nobullets {
     list-style: none;
+}
+/* ---------- Base / reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --link: #0066cc;
+  --border: #dddddd;
+  --gap: 1rem;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: var(--gap);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;          /* 16px base, keeps text readable on phones */
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- File list (mobile: single column) ---------- */
+#file-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+#file-list a {
+  display: block;
+  padding: 0.85rem 1rem;      /* big tap target (44px+) */
+  color: var(--link);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+#file-list a:hover,
+#file-list a:focus-visible {
+  background: #f2f7fc;
+  text-decoration: underline;
+}
+
+/* ---------- Preview dialog (mobile: fullscreen) ---------- */
+dialog:not([open]) {
+  display: none;
+}
+
+dialog {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;             /* accounts for mobile browser toolbars */
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+dialog::backdrop {
+  background:#0F406B;
+}
+
+dialog iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ---------- Tablet (600px and up) ---------- */
+@media (min-width: 600px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  #file-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  /* Dialog becomes a large centered window instead of fullscreen */
+  dialog {
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    border-radius: 8px;
+  }
+
+  #close {
+    border-radius: 4px;
+    width: auto;
+    height: auto;
+    padding: 0 0.6rem;
+  }
+}
+
+/* ---------- Desktop (900px and up) ---------- */
+@media (min-width: 900px) {
+  body {
+    padding: 2rem;
+    font-size: 1.05rem;
+  }
+
+  #file-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  dialog {
+    width: 80vw;
+    max-width: 1200px;
+  }
+}
+
+/* ---------- Extras ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0F406B;
+    --text: #eaeaea;
+    --link: #6cb0ff;
+    --border: #333333;
+  }
+  #file-list a:hover,
+  #file-list a:focus-visible {
+    background: #0261cd;
+  }
 }
