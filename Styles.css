@@ -10,6 +10,14 @@ p {
     color:aliceblue;
     margin-left: 40px;
 }
+.intro {
+    text-align: center;
+}
+hr {
+    border: none;
+    margin: 2em;
+    border-top: 2px solid #fcfcfc;
+}
 .quote {
     margin-left: 4em;
 }
