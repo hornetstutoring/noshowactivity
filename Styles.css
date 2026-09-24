@@ -57,6 +57,7 @@ h5 {
     color: #FFD600;
     font-size: 23;
     margin: 40px;
+    display: block;
 }
 .backtotop {
   /* Change these to taste */
