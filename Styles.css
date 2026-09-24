@@ -1,7 +1,3 @@
-body {
-    background-color:#0F406B
-}
-
 a {
     margin-left: 40px;
     font-size: 25;
@@ -251,9 +247,6 @@ dialog iframe {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0F406B;
-    --text: #eaeaea;
-    --link: #6cb0ff;
     --border: #333333;
   }
   #file-list a:hover,
