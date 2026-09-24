@@ -54,10 +54,11 @@ h5 {
     padding-top: 40px;
 }
 .smalllink {
-    color: #FFD600;
+    color: #F5F3BF;
     font-size: 23;
     margin: 40px;
     display: block;
+    font-style: italic;
 }
 .backtotop {
   /* Change these to taste */
